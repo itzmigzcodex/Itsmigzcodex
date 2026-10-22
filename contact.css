@@ -1,0 +1,225 @@
+:root {
+  --black: #050806;
+  --gd: #0c2a1e;
+  --g: #1f5a3f;
+  --gl: #7fc4a0;
+  --gray-dk: #2a2f2d;
+  --gray: #8b9490;
+  --gray-lt: #dfe5e2;
+  --text: #e9efec;
+  --muted: #a3ada8;
+  --line: rgba(255, 255, 255, 0.12);
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(160deg, #050806 0%, #0c2a1e 45%, #2a2f2d 100%)
+    fixed;
+  background-color: var(--black);
+  color: var(--text);
+  font:
+    400 17px/1.65 Inter,
+    system-ui,
+    sans-serif;
+}
+h1,
+h2 {
+  font-family: Fraunces, Georgia, serif;
+  line-height: 1.1;
+  margin: 0;
+}
+a {
+  color: inherit;
+}
+.wrap {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Navigation */
+nav {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 5;
+  background: rgba(5, 8, 6, 0.75);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+nav .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+}
+nav b {
+  font-family: Fraunces, serif;
+  font-size: 1.15rem;
+}
+.back {
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.back:hover,
+.back:focus-visible {
+  color: var(--gl);
+}
+
+/* Intro */
+.intro {
+  position: relative;
+  overflow: hidden;
+  padding: 90px 0 50px;
+}
+.intro::after {
+  content: "";
+  position: absolute;
+  right: -120px;
+  top: -100px;
+  width: 460px;
+  height: 460px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(127, 196, 160, 0.26),
+    transparent 68%
+  );
+  pointer-events: none;
+}
+.intro .wrap {
+  position: relative;
+  z-index: 1;
+}
+.intro h1 {
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 700;
+  max-width: 14ch;
+}
+.intro p {
+  max-width: 52ch;
+  color: var(--gray-lt);
+  margin: 22px 0 0;
+  font-size: 1.12rem;
+}
+
+/* Contact channels */
+.channels {
+  flex: 1;
+  padding: 30px 0 90px;
+}
+.grid {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+}
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 30px;
+  border-radius: 18px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(6px);
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+.contact-card:hover {
+  border-color: var(--gl);
+  transform: translateY(-3px);
+}
+.icon {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  color: var(--gl);
+  background: linear-gradient(135deg, var(--g), var(--gd));
+  border: 1px solid rgba(127, 196, 160, 0.45);
+}
+.icon svg {
+  width: 26px;
+  height: 26px;
+}
+.contact-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 6px;
+}
+.detail {
+  margin: 0 0 24px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  margin-top: auto;
+  padding: 13px 26px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 500;
+  background: linear-gradient(135deg, var(--g), var(--gd));
+  border: 1px solid var(--gl);
+  color: #fff;
+}
+.btn:hover,
+.btn:focus-visible {
+  background: var(--gl);
+  color: var(--black);
+}
+.copy {
+  margin-top: 12px;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--gl);
+  font: 500 0.95rem Inter, system-ui, sans-serif;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.copy:hover {
+  color: var(--gray-lt);
+}
+
+/* Footer */
+footer {
+  padding: 28px 0;
+  text-align: center;
+  color: var(--gray);
+  font-size: 0.88rem;
+  background: var(--black);
+}
+
+a:focus-visible,
+.copy:focus-visible {
+  outline: 2px solid var(--gl);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-card {
+    transition: none;
+  }
+  .contact-card:hover {
+    transform: none;
+  }
+}
